@@ -1,0 +1,19 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakClient
+metadata:
+  name: energyadminportal
+  namespace: sso
+spec:
+  client:
+    clientAuthenticatorType: client-secret
+    redirectUris:
+      - 'put your redirect url here'
+    clientId: energyadminportal
+    rootUrl: 'put your root url here'
+    secret: energyadminportal-secret
+    publicClient: false
+    standardFlowEnabled: true
+    directAccessGrantsEnabled: false
+  realmSelector:
+    matchLabels:
+      realm: energy-admin-realm

@@ -1,0 +1,19 @@
+apiVersion: capabilities.3scale.net/v1alpha1
+kind: Tenant
+metadata:
+  name: energy-tenant
+  namespace: amp
+  labels:
+    tenant: redhat-tenant
+spec:
+  email: energy@example.com
+  masterCredentialsRef:
+    name: system-seed
+  organizationName: Energy Company
+  passwordCredentialsRef:
+    name: energy-tenant-admin-secret
+  systemMasterUrl: 'enter master url here'
+  tenantSecretRef:
+    name: energy-tenant
+    namespace: amp
+  username: admin
