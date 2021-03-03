@@ -1,0 +1,20 @@
+apiVersion: microcks.github.io/v1alpha1
+kind: MicrocksInstall
+metadata:
+  name: energy-microcksinstall
+  namespace: energy-microcks
+spec:
+  name: energy-microcksinstall
+  version: 1.2.0
+  microcks:
+    replicas: 1
+  postman:
+    replicas: 1
+  keycloak:
+    install: false
+    realm: energy-admin
+    url: "enter sso url here"
+  mongodb:
+    install: true
+    persistent: true
+    volumeSize: 2Gi
