@@ -1,0 +1,16 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakRealm
+metadata:
+  name: energy-admin-realm
+  namespace: sso
+  labels:
+    realm: energy-admin-realm
+spec:
+  instanceSelector:
+    matchLabels:
+      app: sso
+  realm:
+    displayName: Energy Demo Relam
+    enabled: true
+    id: energy
+    realm: energy-admin
