@@ -1,0 +1,20 @@
+apiVersion: kafka.strimzi.io/v1alpha1
+kind: KafkaConnector
+metadata:
+  name: amqp-source-connector
+  namespace: energy-kafka
+  labels:
+    strimzi.io/cluster: energy-connect-s2i-cluster
+spec:
+  class: org.apache.camel.kafkaconnector.amqp.CamelAmqpSourceConnector
+  tasksMax: 1
+  config:
+    key.converter: org.apache.kafka.connect.storage.StringConverter
+    value.converter: org.apache.kafka.connect.storage.StringConverter
+    topics: fromamqp
+    camel.source.path.destinationName: tokafka
+    camel.source.path.destinationType: queue
+    camel.component.amqp.connectionFactory.remoteURI: amqp://energy-broker-amqp-0-svc.energy-amqbroker.svc.cluster.local:5672
+    camel.component.amqp.connectionFactory: '#class:org.apache.qpid.jms.JmsConnectionFactory'
+    camel.component.amqp.testConnectionOnStartup: true
+    camel.component.amqp.includeAmqpAnnotations: true

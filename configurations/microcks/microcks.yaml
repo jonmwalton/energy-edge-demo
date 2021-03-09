@@ -13,7 +13,7 @@ spec:
   keycloak:
     install: false
     realm: energy-admin
-    url: "enter sso url here"
+    url: "keycloak-sso.apps.coffee.demolab.local"
   mongodb:
     install: true
     persistent: true
