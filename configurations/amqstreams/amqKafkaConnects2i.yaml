@@ -1,0 +1,25 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaConnectS2I
+metadata:
+  name: energy-connect-s2i-cluster
+  namespace: energy-kafka
+  annotations:
+    strimzi.io/use-connector-resources: "true"
+  labels:
+    app: energy
+spec:
+  bootstrapServers: 'energy-cluster-kafka-bootstrap:9092'
+  replicas: 1
+  version: 2.6.0
+  config: 
+    group.id: energy-connect-cluster
+    offset.storage.topic: energy-connect-cluster-offsets
+    config.storage.topic: energy-connect-cluster-configs
+    status.storage.topic: energy-connect-cluster-status
+    key.converter: org.apache.kafka.connect.json.JsonConverter
+    value.converter: org.apache.kafka.connect.json.JsonConverter
+    key.converter.schemas.enable: true
+    value.converter.schemas.enable: true
+    config.storage.replication.factor: 1
+    offset.storage.replication.factor: 1
+    status.storage.replication.factor: 1
